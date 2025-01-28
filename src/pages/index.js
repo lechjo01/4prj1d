@@ -51,8 +51,7 @@ export default function Home() {
             <ol>
               <li>
                 <strong>Proof of Concept du projet</strong><br />
-                Première étape du projet : exploration et validation des
-                fonctionnalités principales d’une librairie à travers la réalisation
+                Première étape du projet : exploration d’une librairie à travers la réalisation
                 d’un Proof of Concept.
               </li>
               <li>
@@ -62,7 +61,7 @@ export default function Home() {
               <li>
                 <strong>Programmation concurrente</strong><br />
                 Introduction aux concepts de threads et découverte des techniques
-                pour gérer les processus parallèles dans un projet Java.
+                pour gérer les processus concurrents dans un projet Java.
               </li>
               <li>
                 <strong>Java Database Connectivity</strong><br />
@@ -70,22 +69,22 @@ export default function Home() {
                 Manipulation des données à travers des requêtes SQL.
               </li>
               <li>
-                <strong>TOrganiser le travail : modules Java et workflow Git</strong><br />
+                <strong>Organiser le travail : modules Java et workflow Git</strong><br />
                 Structuration d’un projet avec le système de modules Java et
                 mise en pratique des workflows Git pour une collaboration efficace.
               </li>
               <li>
                 <strong>Projet - Analyse</strong><br />
-                Modélisation et planification du projet.
+                Conception/Modélisation et planification du projet.
                 Description des besoins utilisateurs, création des diagrammes UML (cas d'utilisation, classes, séquences)
                 <li>
                   <strong>Projet - Implémentation</strong><br />
                   Développement et intégration des différentes fonctionnalités du projet
-                  en s’appuyant sur l’analyse initiale et les outils vus en TD.
+                  en s’appuyant sur l’analyse initiale et les sujets étudiés en TD.
                 </li>et élaboration du plan de tests.
                 <li>
                   <strong>Présentation du projet</strong><br />
-                  Présentation de votre projet accompagné d'une critique des choix effectués
+                  Présentation de votre projet avec une critique des choix effectués
                   tant dans la conception que dans le développement.</li>
               </li>
             </ol>
