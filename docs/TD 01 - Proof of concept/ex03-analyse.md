@@ -55,16 +55,11 @@ sequenceDiagram
         Application->>Application: Enregistrer l'heure de début
         Application->>OCR: Lancer le scan OCR (modèle français)
         OCR-->>Application: Texte extrait ou erreur
-        alt Texte extrait avec succès
-            Application->>Application: Enregistrer l'heure de fin
-            Application->>Système de fichiers: Sauvegarder le résultat dans un fichier texte
-            Système de fichiers-->>Application: Fichier sauvegardé
-            Application->>Utilisateur: Afficher le nom du fichier et les horaires du scan
-        else Erreur OCR
-            Application->>Utilisateur: Afficher "Erreur : Analyse OCR échouée"
-        end
+        Application->>Application: Enregistrer l'heure de fin
+        Application->>Système de fichiers: Sauvegarder le résultat dans un fichier texte
+        Système de fichiers-->>Application: Fichier sauvegardé
+        Application->>Utilisateur: Afficher le nom du fichier et les horaires du scan
     end
-
 ```
 
 ## Diagramme de classes
@@ -122,7 +117,10 @@ PaperPleaseApp  ..>  OcrScanner : «create»
 
 Lorsque vous avez terminé de développer votre application, 
 il faut vérifier si elle correspond aux besoins de départ
-en testant manuellement celle-ci. Voici les 3 cas à tester pour valider votre travail.
+en testant manuellement celle-ci. 
+Voici les 3 cas à tester pour valider votre travail.
+Vous pouvez ajouter des cas si vous pensez qu'ils ne sont 
+pas suffisant.
 
 ### Cas 1 : Le fichier spécifié n'existe pas
 
@@ -138,7 +136,7 @@ en testant manuellement celle-ci. Voici les 3 cas à tester pour valider votre t
  - L'application affiche un message d'erreur : "Erreur : Le fichier spécifié n'existe pas. Veuillez vérifier le chemin."
  - L'utilisateur peut ressaisir un chemin.
 
-### Cas 2 : Le fichier spécifié existe, et l'OCR réussit
+### Cas 2 : Le fichier spécifié existe et l'OCR réussit
 
 #### Préconditions :
  - L'application est lancée.
@@ -174,4 +172,4 @@ en testant manuellement celle-ci. Voici les 3 cas à tester pour valider votre t
 
 #### Résultat attendu :
  - L'application affiche un message d'erreur : "Erreur : L'analyse OCR a échoué. L'image ne contient pas de texte lisible."
- - Aucun fichier texte n'est généré.
+ - Le fichier généré est vide.
