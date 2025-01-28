@@ -1,3 +1,3 @@
-# TD 05 - Thread
+# Introduction
 
 ![work in progress](/img/work-in-progress.jpeg)

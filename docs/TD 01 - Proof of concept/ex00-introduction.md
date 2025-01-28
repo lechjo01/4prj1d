@@ -1,3 +1,3 @@
-# TD 08 - Pattern repository
+# Introduction
 
 ![work in progress](/img/work-in-progress.jpeg)

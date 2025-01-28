@@ -1,3 +1,3 @@
-# TD 11 - Créer un plan de tests fonctionnel
+# Exercice 5 - Virtual Thread
 
 ![work in progress](/img/work-in-progress.jpeg)

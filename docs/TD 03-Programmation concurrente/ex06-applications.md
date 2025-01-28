@@ -1,3 +1,3 @@
-# TD 07 - Exemples ...
+# Exercice 6 - Applications
 
 ![work in progress](/img/work-in-progress.jpeg)
