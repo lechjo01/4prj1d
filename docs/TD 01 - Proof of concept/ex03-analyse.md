@@ -1,13 +1,13 @@
 # Exercice 3 - Une brève analyse 
 
 Maintenant que vous connaissez les instructions pour utiliser
-Tesseract, réalisez le Proof Of Concept **PaperPlease** en suivant l'analyse ci-dessous.
-Si vous vous écartez de cette analyse, notez ces différences dans un document.
+Tesseract, réalisez le Proof Of Concept du projet **PaperPlease** en suivant l'analyse ci-dessous.
+Si vous vous écartez de cette analyse, notez ces différences dans un document et discutez-en avec votre enseignant·e.
 
 ## Description des besoins
 
 Créer une application qui permet à un utilisateur d'effectuer un scan OCR 
-sur une image spécifiée par son chemin afin d'en extraire le texte 
+sur une image d'une carte étudiant spécifiée par son chemin afin d'en extraire le texte 
 français qu'elle contient. L'application doit être robuste.
 Une interface simple en ligne de commande doit être mise en place pour cette saisie.
 
@@ -136,13 +136,13 @@ en testant manuellement celle-ci. Voici les 3 cas à tester pour valider votre t
 
 #### Résultat attendu : 
  - L'application affiche un message d'erreur : "Erreur : Le fichier spécifié n'existe pas. Veuillez vérifier le chemin."
- - L'utilisateur peut resaisir un chemin ou quitter.
+ - L'utilisateur peut ressaisir un chemin.
 
 ### Cas 2 : Le fichier spécifié existe, et l'OCR réussit
 
 #### Préconditions :
  - L'application est lancée.
- - Le fichier spécifié est une image valide, par exemple : C:\images\texte.png.
+ - Le fichier spécifié est une image valide, par exemple : C:\images\g12345.png.
 
 #### Étapes :
  - L'utilisateur entre le chemin d'un fichier existant.

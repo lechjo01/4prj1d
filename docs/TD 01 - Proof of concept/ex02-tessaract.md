@@ -7,7 +7,7 @@ de texte.
 Pour effectuer cette tâche, vous allez utiliser Tesseract, un logiciel de reconnaissance optique de caractères sous licence Apache.
 
 
-:::info wikipedia
+:::info L'instant wikipedia
 
 Conçu par les ingénieurs de Hewlett Packard de 1985 à 1995, son développement est abandonné pendant les dix années suivantes ; en 2005, les sources du logiciel sont publiées sous licence Apache et Google poursuit son développement. Initialement limité aux caractères ASCII, il reconnaît les caractères UTF-8 dans plus de 100 langues. 
 
@@ -16,7 +16,7 @@ Conçu par les ingénieurs de Hewlett Packard de 1985 à 1995, son développemen
 ## Installation
 
 Cherchez votre système d'exploitation sur 
-[la documentation de tessaract](https://tesseract-ocr.github.io/tessdoc/Installation.html)
+[la documentation de Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 et installez le sur votre machine.
 
 Une fois l'installation terminée, vérifiez que la commande
@@ -25,7 +25,7 @@ ci-dessous pour scanner votre premier document.
 
 ## Création du projet
 
-1. Créez un projet java avec maven
+1. Créez un projet java avec maven intitulé `OcrQuickRun`
 1. Ajoutez les dépendances suivantes dans le `pom.xml`
 ```xml showLineNumbers
 <dependency>
@@ -59,7 +59,7 @@ Ces fichiers contiennent les polices et les formes des caractères ainsi que des
 
 **Téléchargez** les données d’entraînement du logiciel relatives au français 
 [fra.traineddata](https://github.com/tesseract-ocr/tessdata_fast)
- et placez le fichier dans les ressources du projet (`/src/main/resources/`).
+ et placez le fichier dans le sous-dossier `data` des ressources du projet (`/src/main/resources/data`).
 
 Ajoutez dans votre `main` le code permettant lire ces données d’entraînement. 
 ```java showLineNumbers

@@ -1,8 +1,8 @@
 # Exercice 1 - Lecture et écriture de fichiers
 
-L'utilisation de la bibliothèque Tesseract nécessite la lecture de plusieurs fichiers sur la machine. Il s'agit notamment des fichiers image à analyser pour en extraire du texte, ainsi que des fichiers de données d'entraînement, essentiels pour permettre à Tesseract d'interpréter et de reconnaître le texte recherché.
+L'utilisation de la bibliothèque Tesseract nécessite la lecture de plusieurs fichiers sur la machine. Il s'agit notamment des fichiers images à analyser pour en extraire du texte ainsi que des fichiers de données d'entraînement, essentiels pour permettre à Tesseract d'interpréter et de reconnaître le texte recherché.
 Avant d'utiliser cette librairie, il faut être capable d'écrire un programme Java qui trouve ces fichiers aux endroits souhaités.
-Il faut distinguer deux situations : 
+Pour comprendre le code Java nécessaire il faut distinguer deux situations : 
 - les fichiers sont internes au programme et sont
 présents dans les dossiers de celui-ci.
 - les fichiers sont extérieurs au programme et fournis
@@ -16,7 +16,7 @@ systématiquement copié tel quel dans le dossier `target` lors de la compilatio
 Ce dossier est destiné à contenir les fichiers de configuration et les
 données nécessaires au paramétrage du programme.
 
-:::tip Dossier target
+:::tip Petit rappel sur le dossier target
 
 Dans un projet Maven, le dossier `target` est généralement créé lors de la phase de compilation et contient les fichiers compilés, tels que les 
 fichiers `.class` ainsi que les artefacts générés comme les fichiers 
@@ -27,7 +27,7 @@ est placé dans le `classpath`.
 
 :::
 
-:::note Exercice
+:::note Exercice a
 
 Afin de vérifiez le bon fonctionnement de cette copie, suivez les étapes suivantes :
 1. Créez un projet Java avec maven comme moteur
@@ -46,7 +46,7 @@ dynamique des classes dans la mémoire à partir de fichiers `.class`.
 Lorsque vous exécutez un programme, si une classe utilisée par le 
 programme n'est pas encore chargée en mémoire, le `ClassLoader` localise
 le fichier `.class` correspondant et le charge.
-Cette classe `java.lang.ClassLoader` fournit les mécanismes pour chercher des classes mais également des ressources.
+Cette classe `java.lang.ClassLoader` fournit les mécanismes pour chercher des classes mais également pour chercher des ressources.
 
 Pour vous en covaincre commencez par ajouter à la méthode 
 `public static void main(String[] args)` du projet `JavaSandBox` 
@@ -61,10 +61,9 @@ URL urlConfig = classLoader.getResource("config.properties");
 System.out.println("Fichier config.properties : " + urlConfig);
 ```
 
-Vérifiez en exécutant votre programme le chemin absolu du
-fichier `config.properties`.
+Vérifiez le chemin absolu du fichier `config.properties` afficher par votre programme.
 
-:::note Exercice
+:::note Exercice b
 
 Déterminez la valeur retournée par la méthode `getResource`
 si fichier n'existe pas.
@@ -73,7 +72,7 @@ si fichier n'existe pas.
 
 ### Lecture d'un fichier
  
-:::note Exercice
+:::note Exercice c
 
 Remplissez le fichier `config.properties` avec les données suivantes : 
 
@@ -93,7 +92,8 @@ dans le terminal en utilisant les classes du package `java.nio.`.
 
 ## Ressources extérieurs au projet
 
-Ajoutez à la méthode `public static void main(String[] args)` 
+Pour tester comment votre programme peut accéder à des ressources 
+externes, ajoutez à la méthode `public static void main(String[] args)` 
 du projet `JavaSandBox` les instructions suivantes : 
 
 ```java showLineNumbers
@@ -136,19 +136,19 @@ Path externalPath = FileSystems.getDefault().getPath("./external-data/students.t
 System.out.println("Chemin externe : " + externalPath.toAbsolutePath());
 ```
 
-La variable `externalPath` fait référence au fichier `students.txt`.
+Vérifiez que la variable `externalPath` affichée fait référence au fichier `students.txt`.
 
-### Écriture d'un fichier
+### Écriture dans un fichier
 
-Pour écrire des données de ce fichier, les classes du package `java.nio.file` sont toujours très utiles.
-Essayez par exemple d'ajouter l'instruction : 
+Pour écrire des données dans ce fichier, les classes du package `java.nio.file` sont toujours très utiles.
+Essayez par exemple d'ajouter l'instruction ci-dessous et testez votre programme : 
 
 ```java showLineNumbers
 Files.write(externalPath, "G12345;Alice".getBytes(),
         StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
 ```
 
-Consulter la documentation pour obtenir la liste des options
+Consultez la documentation pour obtenir la liste des options
 `StandardOpenOption`.
 
 <!-- ## Tests unitaires
