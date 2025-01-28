@@ -1,12 +1,17 @@
 # Exercice 2 - Reconnaissance optique de caractères
 
-La reconnaissance optique de caractères (ROC, ou OCR pour l'anglais optical character recognition), ou « océrisation », désigne les procédés informatiques pour la transcription d'images de textes imprimés ou dactylographiés en fichiers de texte.
+La reconnaissance optique de caractères ou OCR pour l'anglais optical 
+character recognition, désigne les procédés informatiques pour la 
+transcription d'images de textes imprimés ou dactylographiés en fichiers 
+de texte.
+Pour effectuer cette tâche, vous allez utiliser Tesseract, un logiciel de reconnaissance optique de caractères sous licence Apache.
 
-Un ordinateur réclame pour l'exécution de cette tâche un logiciel d'OCR. Celui-ci permet de récupérer le texte dans l'image d'un texte imprimé et de le sauvegarder dans un fichier pouvant être exploité dans un traitement de texte pour enrichissement, et stocké dans une base de données ou sur un autre support exploitable par un système informatique. 
 
-Tesseract est un logiciel de reconnaissance optique de caractères sous licence Apache.
+:::info wikipedia
 
 Conçu par les ingénieurs de Hewlett Packard de 1985 à 1995, son développement est abandonné pendant les dix années suivantes ; en 2005, les sources du logiciel sont publiées sous licence Apache et Google poursuit son développement. Initialement limité aux caractères ASCII, il reconnaît les caractères UTF-8 dans plus de 100 langues. 
+
+:::
 
 ## Installation
 
@@ -14,11 +19,15 @@ Cherchez votre système d'exploitation sur
 [la documentation de tessaract](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 et installez le sur votre machine.
 
+Une fois l'installation terminée, vérifiez que la commande
+`tesseract -v` affiche la version installée et suivez les instructions
+ci-dessous pour scanner votre premier document.
+
+## Création du projet
+
 1. Créez un projet java avec maven
 1. Ajoutez les dépendances suivantes dans le `pom.xml`
-
 ```xml showLineNumbers
-
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-simple</artifactId>
@@ -31,19 +40,28 @@ et installez le sur votre machine.
     <artifactId>tess4j</artifactId>
     <version>5.11.0</version>
 </dependency>
-
 ```
-
-1. Ajoutez dans le main `Tesseract tesseract = new Tesseract();`
+3. Ajoutez dans le main `Tesseract tesseract = new Tesseract();`
 sans oublier d'importer la classe `net.sourceforge.tess4j.Tesseract;`.
 1. Essayez de compiler et d'exécuter votre projet.
 
 ## Les données d’entraînement
 
-1. Téléchargez les données relatives au français 
-[fra.traineddata](https://github.com/tesseract-ocr/tessdata_fast)
-1. Placez le fichier dans les ressources du projet
+Les données d'entraînement de Tesseract sont des fichiers  qui 
+permettent au moteur OCR de reconnaître et d'interpréter le texte 
+dans les images.
+Les données d'entraînement se présentent sous la forme de fichiers 
+`.traineddata`. Chaque fichier correspond à une langue. Par exemple :
+- `eng.traineddata` pour l'anglais.
+- `fra.traineddata` pour le français.
 
+Ces fichiers contiennent les polices et les formes des caractères ainsi que des statistiques linguistiques.
+
+**Téléchargez** les données d’entraînement du logiciel relatives au français 
+[fra.traineddata](https://github.com/tesseract-ocr/tessdata_fast)
+ et placez le fichier dans les ressources du projet (`/src/main/resources/`).
+
+Ajoutez dans votre `main` le code permettant lire ces données d’entraînement. 
 ```java showLineNumbers
     ClassLoader classLoader = Main.class.getClassLoader();
     String dataDirectory = classLoader.getResource("data").getFile();
@@ -53,47 +71,18 @@ sans oublier d'importer la classe `net.sourceforge.tess4j.Tesseract;`.
     tesseract.setLanguage("fra");
 ```
 
-1. Essayez de compiler et d'exécuter votre projet.
-
+Vérifiez que les fichiers sont visibles par votre programme
+en essayant de l'exécuter.
 
 ## Les images à scanner
 
-Commencer par un pdf ?
-
-Prenez une photo de votre carte étudiant et 
-déposez cette image dans un dossier extérieure
-à votre projet java intitulé `data-out`.
+Prenez une photo de votre carte étudiant et déposez cette image dans un dossier extérieur à votre projet java intitulé `data-out`.
+Renommez cette image `g12345.png` et vérifiez que votre programme reconnaisse les caractères qui sont présents sur votre carte
+en ajoutant le code suivant à votre `main` : 
 
 ```java showLineNumbers
-String imageName = "etudiant12345.png";
-File imageFile = new File("data-out/" + imageName);
-if (!imageFile.exists()) {
-    throw new FileNotFoundException("Fichier inexistant " + imageFile.getAbsolutePath());
-}
-```
-
-:::danger Gestion des exceptions
-
-Bloc Try-catch
-
-```java showLineNumbers
-try {
-
-} catch (FileNotFoundException e) {
-    System.out.println("Ficher inexistant " + e.getMessage());
-}
-```
-
-:::
-
-
-```java showLineNumbers
-String result = tesseract.doOCR(imageFile);
+String imageName = "g12345.png";
+Path imagePath = FileSystems.getDefault().getPath("data-out/", imageName);
+String result = tesseract.doOCR(imagePath.toFile());
 System.out.println(result);
 ```
-
-:::warning Gestion des exceptions
-
-Une nouvelle exception doit être gérée `TesseractException`.
-
-:::
