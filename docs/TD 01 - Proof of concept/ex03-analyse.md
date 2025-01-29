@@ -80,7 +80,7 @@ class ConsoleView {
   + askFileName() String
   + printError(message : String) void
   + printResult(message : String) void
-  - Scanner input
+  - input : Scanner
 }
 class Controller {
   + Controller(model : OcrScanner, view : ConsoleView) 
@@ -99,8 +99,8 @@ class OcrScanner {
   + isFileFound(imageName : String) boolean
   + setFileToScan(imageName : String) 
   + scan() Path
-  - Path fileToScan;
-  - Tesseract tesseract;
+  - fileToScan : Path
+  - tesseract : Tesseract 
 }
 
 Controller "1"  --> "1" ConsoleView 
