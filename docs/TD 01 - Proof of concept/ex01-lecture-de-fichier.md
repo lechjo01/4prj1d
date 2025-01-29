@@ -1,6 +1,6 @@
 # Exercice 1 - Lecture et écriture de fichiers
 
-L'utilisation de la bibliothèque Tesseract nécessite la lecture de plusieurs fichiers sur la machine. Il s'agit notamment des fichiers images à analyser pour en extraire du texte ainsi que des fichiers de données d'entraînement, essentiels pour permettre à Tesseract d'interpréter et de reconnaître le texte recherché.
+L'utilisation de la bibliothèque Tesseract nécessite la lecture de plusieurs fichiers locaux. Il s'agit notamment des images à analyser pour en extraire du texte ainsi que des fichiers de données d'entraînement, essentiels pour permettre à Tesseract d'interpréter et de reconnaître le texte recherché.
 Avant d'utiliser cette librairie, il faut être capable d'écrire un programme Java qui trouve ces fichiers aux endroits souhaités.
 Pour comprendre le code Java nécessaire il faut distinguer deux situations : 
 - les fichiers sont internes au programme et sont
@@ -20,21 +20,21 @@ données nécessaires au paramétrage du programme.
 
 Dans un projet Maven, le dossier `target` est généralement créé lors de la phase de compilation et contient les fichiers compilés, tels que les 
 fichiers `.class` ainsi que les artefacts générés comme les fichiers 
-JAR.
-
-Le répertoire `target/classes`, où les fichiers `.class` sont compilés
+JAR. 
+Le répertoire `target/classes`, où les fichiers `.class` sont compilés,
 est placé dans le `classpath`.
 
 :::
 
 :::note Exercice a
 
-Afin de vérifiez le bon fonctionnement de cette copie, suivez les étapes suivantes :
+Afin de vérifiez le bon fonctionnement de cette copie automatique de fichiers,
+ suivez les étapes suivantes :
 1. Créez un projet Java avec maven comme moteur
 de production intitulé `JavaSandBox`.
 1. Ouvrez le dossier de gestion de ressources `/src/main/resources`.
 1. Créez-y le fichier vide `config.properties`.
-1. Demandez à maven de compiler votre code source.
+1. Demandez à maven de compiler votre code source via la commande `mvn compile`.
 1. Vérifiez la création du fichier `/target/classes/config.properties`.
 
 :::
@@ -61,12 +61,12 @@ URL urlConfig = classLoader.getResource("config.properties");
 System.out.println("Fichier config.properties : " + urlConfig);
 ```
 
-Vérifiez le chemin absolu du fichier `config.properties` afficher par votre programme.
+Vérifiez le chemin absolu du fichier `config.properties` affiché par votre programme.
 
 :::note Exercice b
 
 Déterminez la valeur retournée par la méthode `getResource`
-si fichier n'existe pas.
+si le fichier n'existe pas.
 
 :::
 
@@ -82,7 +82,7 @@ app.version=1.0
 app.author=G12345
 ```
 
-Dans votre programme, affichez le contenu du fichier `config.properties`
+Modifiez le `main` de votre programme pour afficher le contenu du fichier `config.properties`
 dans le terminal en utilisant les classes du package `java.nio.`. 
 - la classe `Files` permet de lire le contenu d'un fichier.
 - la classe `Path` contient le chemin vers un fichier .
@@ -90,7 +90,7 @@ dans le terminal en utilisant les classes du package `java.nio.`.
 
 :::
 
-## Ressources extérieurs au projet
+## Ressources externes au projet
 
 Pour tester comment votre programme peut accéder à des ressources 
 externes, ajoutez à la méthode `public static void main(String[] args)` 

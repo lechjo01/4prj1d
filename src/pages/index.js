@@ -77,14 +77,15 @@ export default function Home() {
                 <strong>Projet - Analyse</strong><br />
                 Conception/Modélisation et planification du projet.
                 Description des besoins utilisateurs, création des diagrammes UML (cas d'utilisation, classes, séquences)
+                et élaboration du plan de tests.
                 <li>
                   <strong>Projet - Implémentation</strong><br />
                   Développement et intégration des différentes fonctionnalités du projet
                   en s’appuyant sur l’analyse initiale et les sujets étudiés en TD.
-                </li>et élaboration du plan de tests.
+                </li>
                 <li>
                   <strong>Présentation du projet</strong><br />
-                  Présentation de votre projet avec une critique des choix effectués
+                  Présentation de votre projet et critique des choix effectués
                   tant dans la conception que dans le développement.</li>
               </li>
             </ol>

@@ -15,7 +15,7 @@ Conçu par les ingénieurs de Hewlett Packard de 1985 à 1995, son développemen
 
 ## Installation
 
-Cherchez votre système d'exploitation sur 
+Cherchez votre système d'exploitation dans 
 [la documentation de Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 et installez le sur votre machine.
 
@@ -73,6 +73,23 @@ Ajoutez dans votre `main` le code permettant lire ces données d’entraînement
 
 Vérifiez que les fichiers sont visibles par votre programme
 en essayant de l'exécuter.
+
+:::danger Gestion des fichiers traineddata dans Git
+
+Les fichiers `traineddata` sont volumineux et 
+**ne doivent pas être versionnés** dans le dépôt Git.
+Ces fichiers ne sont pas modifiés par le code source et peuvent être téléchargés séparément.
+Ajoutez la ligne suivante dans le fichier `.gitignore` :
+
+```
+*.traineddata
+```
+
+Téléchargez les fichiers `traineddata` à chaque installation en les récupérant depuis la source officielle de Tesseract 
+
+De cette façon chaque développeur pourra récupérer les fichiers nécessaires sans alourdir le dépôt.
+
+:::
 
 ## Les images à scanner
 
